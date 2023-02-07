@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3736426 */
+  src: url('iconfont.woff2?t=1669229999040') format('woff2'),
+       url('iconfont.woff?t=1669229999040') format('woff'),
+       url('iconfont.ttf?t=1669229999040') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pinleishanchu_o:before {
+  content: "\eb7e";
+}
+
+.icon-dashang1:before {
+  content: "\e692";
+}
+
+.icon-dianzan:before {
+  content: "\ec7f";
+}
+
+.icon-shoucang:before {
+  content: "\eca7";
+}
+

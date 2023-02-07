@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+span._drop {
+	font-size: 7px;
+	height: 2px;
+	width: 2px;
+	background: #eff1fa;
+	margin: 0 3px;
+	display: inline-block;
+}
