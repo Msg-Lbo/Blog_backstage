@@ -36,7 +36,7 @@ export default createStore({
     // 登录
     webLogin({ commit, state }, loginUser) {
       axios({
-        url: 'https://api.ylmty.cc/api/ylmty-login/',
+        url: '/api/ylmty-login/',
         method: 'post',
         data: Qs.stringify(loginUser)
       }).then((res) => {
@@ -57,7 +57,7 @@ export default createStore({
     // 注册
     webRegister({ commit }, registerUser) {
       axios({
-        url: 'https://api.ylmty.cc/api/ylmty-register/',
+        url: '/api/ylmty-register/',
         method: 'post',
         data: Qs.stringify(registerUser)
       }).then((res) => {
@@ -87,7 +87,7 @@ export default createStore({
       if (rember == 'true') {
         if (token) {
           axios({
-            url: 'https://api.ylmty.cc/api/auto-login/',
+            url: '/api/auto-login/',
             method: 'post',
             data: Qs.stringify({ token })
           }).then((res) => {
@@ -109,7 +109,7 @@ export default createStore({
       commit('clearUserinfo')
       localStorage.clear();
       axios({
-        url: 'https://api.ylmty.cc/api/ylmty-logout/',
+        url: '/api/ylmty-logout/',
         method: 'post',
         data: Qs.stringify({ token })
       }).then((res) => {
@@ -125,7 +125,7 @@ export default createStore({
       // 鉴权结果
       let perm_data;
       await axios({
-        url: 'https://api.ylmty.cc/api/ylmty-checkperm/',
+        url: '/api/ylmty-checkperm/',
         method: 'post',
         data: Qs.stringify({
           token,

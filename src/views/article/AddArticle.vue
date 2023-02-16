@@ -10,7 +10,7 @@
             <div class="add-article-to-calssify">
                 <el-select v-model="article_info.category" class="m-2" placeholder="分类">
                     <el-option label="未分类" value="nobelong" />
-                    <el-option v-for="item in all_classify" :key="item.value" :label="item.name" :value="item.name" />
+                    <el-option v-for="item in all_category" :key="item.id" :label="item.name" :value="item.name" />
                 </el-select>
             </div>
             <div class="add-article-time">
@@ -36,15 +36,14 @@ import { ElMessage } from 'element-plus';
 import router from '@/router';
 import { saveNewArticle, getAllCategories } from '@/requests/api'
 onMounted(() => {
-    getAllClassify()
+    get_AllCategories()
 })
 
-let all_classify = ref()
-const getAllClassify = () => {
+let all_category = ref()
+const get_AllCategories = () => {
     getAllCategories().then((res: any) => {
-        console.log(res.allclassify_of_num);
-
-        all_classify.value = res.allclassify_of_num
+        console.log(res.allcategory_of_num);
+        all_category.value = res.allcategory_of_num
     })
 }
 
@@ -66,7 +65,7 @@ interface info { //类型匹配
 }
 //保存
 const saveArticle = () => {
-    if (article_info.title && article_info.describe && article_info.content) {
+    if (article_info.title && article_info.describe && article_info.content && article_info.category && article_info.time) {
         saveNewArticle(article_info).then((res) => {
             // console.log(res);
             if (res == 'save article error') {
@@ -87,7 +86,7 @@ const saveArticle = () => {
         })
     } else {
         ElMessage({
-            message: '不可为空.',
+            message: '必填项不可为空.',
             duration: 1000,
             type: 'error',
         })

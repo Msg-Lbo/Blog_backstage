@@ -44,6 +44,7 @@ import axios from 'axios';
 import { computed, onMounted, reactive, ref } from 'vue';
 import Qs from 'qs';
 import store from '@/store';
+import { ElMessage } from 'element-plus';
 // 载入加载
 onMounted(() => {
     getUserList()
@@ -74,24 +75,26 @@ const EditUser = (row: userinfo) => {
 
 const DeleteUser = (row: { id: number; }) => {
     console.log(row.id)
+    ElMessage.error('暂未开发')
 }
 
 const EditUserInfo = () => {
-    axios({
-        url: "http://127.0.0.1:9000/api/ylmty-userlist/",
-        method: 'post',
-        data: Qs.stringify({
-            token: store.getters.isnotUserlogin.token,
-            id: editUserForm.id,
-            edit_new_account: editUserForm.account,
-            edit_new_nickname: editUserForm.nickname,
-            edit_new_email: editUserForm.email,
-            edit_new_password: editUserForm.password,
-        })
-    }).then((res) => {
-        console.log(res.data);
+    // axios({
+    //     url: "http://127.0.0.1:9000/api/ylmty-userlist/",
+    //     method: 'post',
+    //     data: Qs.stringify({
+    //         token: store.getters.isnotUserlogin.token,
+    //         id: editUserForm.id,
+    //         edit_new_account: editUserForm.account,
+    //         edit_new_nickname: editUserForm.nickname,
+    //         edit_new_email: editUserForm.email,
+    //         edit_new_password: editUserForm.password,
+    //     })
+    // }).then((res) => {
+    //     console.log(res.data);
 
-    })
+    // })
+    ElMessage.error('暂未开发')
 }
 
 // 用户列表

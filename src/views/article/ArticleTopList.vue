@@ -2,7 +2,7 @@
     <el-table :data="top_article" style="width: 100%">
         <el-table-column align="center" label="id" prop="id" width="50px" />
         <el-table-column label="标题" prop="title" width="auto" />
-        <el-table-column align="center" label="分类" prop="classify" width="100px" />
+        <el-table-column align="center" label="分类" prop="category" width="100px" />
         <el-table-column align="center" label="创建时间" prop="create_time" width="200px" />
         <el-table-column align="center" label="更新时间" prop="update_time" width="200px" />
         <el-table-column fixed="right"  width="200px">

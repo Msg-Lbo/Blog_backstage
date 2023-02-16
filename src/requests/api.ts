@@ -83,10 +83,10 @@ const getBarrages = async () => {
     })
 }
 // 获取全部分类
-const getAllCategories = async () => {
-    return await new Promise((resolve, reject) => {
+const getAllCategories = () => {
+    return new Promise((resolve, reject) => {
         axios({
-            url: '/api/ylmty-category/',
+            url: '/api/get-category/',
             method: 'get'
         }).then((res) => {
             if (res.status == 200) {
@@ -100,16 +100,15 @@ const getAllCategories = async () => {
         })
     })
 }
-// 保存新分类
-const saveNewCategory = (token: string, category_name: string, belong: string) => {
+// 保存分类
+const saveCategory = (token: string, category_name: string) => {
     return new Promise((resolve, reject) => {
         axios({
-            url: '/api/ylmty-category/',
-            method: 'put',
+            url: '/api/post-category/',
+            method: 'post',
             data: Qs.stringify({
                 token: token,
-                category_name: category_name,
-                belong_name: belong
+                category: category_name
             })
         }).then((res) => {
             if (res.status == 200) {
@@ -127,15 +126,12 @@ const saveNewCategory = (token: string, category_name: string, belong: string) =
 const deleteCategory = (token: string, name: string) => {
     return new Promise((resolve, reject) => {
         axios({
-            url: '/api/ylmty-category/',
-            method: 'delete',
+            url: '/api/delete-category/',
+            method: 'post',
             data: Qs.stringify({
                 token: token,
-                name: name
-            }),
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+                category: name
+            })
         }).then((res) => {
             if (res.status == 200) {
                 resolve(res.data)
@@ -170,12 +166,33 @@ const saveFriendTemplate = (token: string, friend_template: string) => {
         })
     })
 }
+// 获取友链模板
+const getTemplate = () => {
+    return new Promise((resolve, reject) => {
+        axios({
+            url: '/api/get-friend-template/',
+            method: 'get'
+        }).then((res: { status: number; data: any; statusText: string; }) => {
+            if (res.status == 200) {
+                resolve(res.data);
+            } else {
+                alert("通信：" + res.statusText + "\n\n错误：" + res.data)
+                return
+            }
+        }).catch((err: any) => {
+            console.log(err);
+            alert('请求错误,详情查看网站后台日志...');
+        })
+    })
+}
 export {
     saveNewArticle,
     getAllArticle,
     deleteArticle,
     getBarrages,
     getAllCategories,
-    saveNewCategory,
+    saveCategory,
     deleteCategory,
+    saveFriendTemplate,
+    getTemplate,
 }
